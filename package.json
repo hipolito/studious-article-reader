@@ -1,0 +1,31 @@
+{
+  "name": "studious-article-reader",
+  "version": "1.0.0",
+  "description": "A simple api for rss article reader",
+  "main": "./src/infra/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/infra/app.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hipolito/studious-article-reader.git"
+  },
+  "keywords": [
+    "rss",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Hipólito Moreira",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.21.2",
+    "xml2js": "^0.4.23"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "name": "get_articles",
+    "private": true,
+    "description": "Get all articles in the database",
+    "main": "./getArticles.js"
+}

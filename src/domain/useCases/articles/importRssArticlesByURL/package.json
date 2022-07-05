@@ -1,0 +1,6 @@
+{
+    "name": "import_rss",
+    "private": true,
+    "description": "Import RSS Articles using URL",
+    "main": "./importRSSArticlesByURL.js"
+}
