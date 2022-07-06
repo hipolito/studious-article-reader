@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS studious_article_reader_db;
-
-USE studious_article_reader_db
-
 DROP TABLE IF EXISTS `Articles`;
 CREATE TABLE `Articles` (
   `id` int NOT NULL AUTO_INCREMENT,
