@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const responseHandler = require("./handlers/responseHandler")
-const errorHandler = require("./handlers/responseHandler")
+const errorHandler = require("./handlers/errorHandler")
 
 class RouteBuilder {
     constructor() {

@@ -1,28 +1,17 @@
 const axios = require('axios')
-const { parseString } = require('xml2js');
-const { Sequelize, DataTypes } = require('sequelize')
+const xml2js = require('xml2js');
+const { DataTypes } = require('sequelize')
 const { Import, Article } = require('../../../../infra/database/models')
-const { database, username, password, host, port, dialect } = require('../../../../infra/config/database').development
+const sequelizeStart = require('../../../../infra/database/init')
 
 module.exports = async function ImportRSSArticlesByURL({ siteRssUrl }) {
     if (siteRssUrl) {
-        const { data } = await axios.get(siteRssUrl)
+        const rssSiteRequest = await axios.get(siteRssUrl)
+        const sequelize = await sequelizeStart()
+        const importDAO = Import(sequelize, DataTypes)
+        const articleDAO = Article(sequelize, DataTypes)
 
-        const sequelize = new Sequelize(database, username, password, { host, dialect, port })
-        
-        try {
-            await sequelize.authenticate();
-            console.log('Connection has been established successfully.');
-          } catch (error) {
-            console.error('Unable to connect to the database:', error);
-        }
-
-        const importClient = Import(sequelize, DataTypes)
-        const articleClient = Article(sequelize, DataTypes)
-
-
-        await parseString(data, async function (err, result) {
-            if (err) throw err
+        return xml2js.parseStringPromise(rssSiteRequest.data).then(function (result) {
             let articlesRawData = result.rss.channel[0].item
             let rawInput = ""
             articlesRawData.forEach(async (article) => {
@@ -30,14 +19,14 @@ module.exports = async function ImportRSSArticlesByURL({ siteRssUrl }) {
                 if (rawInput.length + articleStringfied.length < 16001) {
                     rawInput += articleStringfied + ","
                 } else {
-                    await importClient.create({ importDate: new Date(), rawContent: rawInput })
+                    await importDAO.create({ importDate: new Date(), rawContent: rawInput })
                     rawInput = articleStringfied
                 }
             })
 
             const articles = result.rss.channel[0].item
             articles.forEach(article => {
-                articleClient.upsert({
+                articleDAO.upsert({
                     externalId: JSON.stringify(article.guid[0]),
                     importDate: new Date(),
                     title: article.title[0],
@@ -47,7 +36,16 @@ module.exports = async function ImportRSSArticlesByURL({ siteRssUrl }) {
                     mainPicture: JSON.stringify(article["media:content"][0])
                 })
             })
+            return JSON.stringify({
+                status: 204,
+                msg: `File ${siteRssUrl} imported with success`
+            })
         })
+        .catch(function (err) {
+                return JSON.stringify({
+                    status: 422,
+                    msg: `File ${siteRssUrl} is an invalid xml`
+                })
+            })
     }
-
 }
