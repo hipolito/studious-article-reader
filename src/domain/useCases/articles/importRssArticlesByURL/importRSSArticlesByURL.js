@@ -40,12 +40,11 @@ module.exports = async function ImportRSSArticlesByURL({ siteRssUrl }) {
                 status: 204,
                 msg: `File ${siteRssUrl} imported with success`
             })
-        })
-        .catch(function (err) {
-                return JSON.stringify({
-                    status: 422,
-                    msg: `File ${siteRssUrl} is an invalid xml`
-                })
+        }).catch(function (err) {
+            return JSON.stringify({
+                status: 422,
+                msg: `File ${siteRssUrl} is an invalid xml`
             })
+        })
     }
 }

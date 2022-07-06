@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "df71db99-7cdf-4ecb-9d72-35d24d185485",
+		"name": "testArticlesApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get  https://www.lemonde.fr/rss/une.xml data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/articles/import?siteRssUrl=https://www.lemonde.fr/rss/une.xml ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"articles",
+						"import"
+					],
+					"query": [
+						{
+							"key": "siteRssUrl",
+							"value": "https://www.lemonde.fr/rss/une.xml "
+						}
+					]
+				},
+				"description": "Post to  https://www.lemonde.fr/rss/une.xml to get the xml file and parser"
+			},
+			"response": []
+		},
+		{
+			"name": "Get  https://www.theguardian.com/world/europe-news/rss data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/articles/import?siteRssUrl=https://www.theguardian.com/world/europe-news/rss",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"articles",
+						"import"
+					],
+					"query": [
+						{
+							"key": "siteRssUrl",
+							"value": "https://www.theguardian.com/world/europe-news/rss"
+						}
+					]
+				},
+				"description": "Post to  https://www.lemonde.fr/rss/une.xml to get the xml file and parser"
+			},
+			"response": []
+		},
+		{
+			"name": "Show all articles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try to get some random site url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/articles/import?siteRssUrl=https://www.google.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"articles",
+						"import"
+					],
+					"query": [
+						{
+							"key": "siteRssUrl",
+							"value": "https://www.google.com"
+						}
+					]
+				},
+				"description": "Post to  https://www.lemonde.fr/rss/une.xml to get the xml file and parser"
+			},
+			"response": []
+		}
+	]
+}

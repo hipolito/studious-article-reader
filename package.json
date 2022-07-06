@@ -4,7 +4,6 @@
   "description": "A simple api for rss article reader",
   "main": "./src/infra/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/infra/app.js",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo"

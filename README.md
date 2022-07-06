@@ -1,6 +1,18 @@
 # studious-article-reader
 
-API to read RSS Articales from a xml URL
+API to read RSS Articales from a xml URL, that will expose the endpoints:
+```
+GET /api/articles
+POST /api/articles/import
+```
+
+The second endpoint needs a query parameter ``?siteRssUrl`` with a endpoint with a valid rss xml file.
+
+A valid API call by example is:
+
+```
+POST {endpoint}/api/articles/import?siteRssUrl=https://www.lemonde.fr/rss/une.xml 
+```
 
 ## 1. Setup
 
@@ -70,7 +82,6 @@ npm run start
 ## 2. Docker
 
 ### 2.1 Configure
-docker needs
 If docker is used in your environment, please configure a ``.env`` in the root of this project:
 
 ```
@@ -86,4 +97,11 @@ DATABASE_DIALECT='mysql'
 ### 2.2 Run
 ```
 docker-compose up
+```
+
+## 3 Test
+To functional tests I shared a postman collection with some examples and how to use the API
+
+```
+testArticlesApi.postman_collection.json
 ```
