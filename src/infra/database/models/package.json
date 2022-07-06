@@ -1,0 +1,6 @@
+{
+    "name": "models",
+    "private": true,
+    "description": "Models",
+    "main": "./models.js"
+}

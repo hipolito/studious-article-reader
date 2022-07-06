@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize')
 const { database, username, password, host, dialect } = require('../config/database')
 
 module.exports = async () => {
-    const sequelize = new Sequelize(database, username, password, { host, dialect })
+    const sequelize = new Sequelize(database, username, password, { host, port, dialect })
 
     try {
         await sequelize.authenticate();
