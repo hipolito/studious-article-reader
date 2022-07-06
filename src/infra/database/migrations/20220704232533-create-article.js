@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       externalId: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING,
+        unique: true
       },
       importDate: {
         type: Sequelize.DATE

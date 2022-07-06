@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   
   Article.init({
-    externalId: DataTypes.TEXT,
+    externalId:{
+      type: DataTypes.STRING,
+      unique: true
+    },
     importDate: DataTypes.DATE,
     title: DataTypes.TEXT,
     description: DataTypes.TEXT,
