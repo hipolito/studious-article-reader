@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   
   Article.init({
     externalId:{
-      type: DataTypes.STRING,
+      type: 'VARCHAR(500)',
       unique: true
     },
     importDate: DataTypes.DATE,

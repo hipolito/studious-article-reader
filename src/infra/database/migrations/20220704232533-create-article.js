@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       externalId: {
-        type: Sequelize.STRING,
+        allowNull: false,
+        type: 'VARCHAR(500)',
         unique: true
       },
       importDate: {
