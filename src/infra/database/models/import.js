@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Import.init({
     importDate: DataTypes.DATE,
-    rawContent: DataTypes.TEXT
+    rawContent: 'TEXT(65500)'
   }, {
     sequelize,
     modelName: 'Import',

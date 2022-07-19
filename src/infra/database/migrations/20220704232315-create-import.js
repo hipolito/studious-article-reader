@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       rawContent: {
-        type: Sequelize.TEXT
+        type: 'TEXT(65500)'
       },
       createdAt: {
         allowNull: false,

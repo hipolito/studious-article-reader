@@ -1,3 +1,3 @@
 module.exports = (res, output) => {
-    res.status(200).send(output)
+    res.status(output.status).send(output.msg)
 }

@@ -11,5 +11,5 @@ module.exports = async function getArticles() {
 function processResponse(articles){
     let listOfArticles = []
     articles.forEach(article => listOfArticles.push(new ArticleEntity(article.dataValues)));
-    return listOfArticles
+    return { status:200, msg:listOfArticles }
 }

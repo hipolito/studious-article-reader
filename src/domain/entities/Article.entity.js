@@ -9,13 +9,13 @@ function vowelComparator(word1, word2){
 }
 
 function findLongestVowelWord(title){
-    let words = title.split(/[-\s]/)
+    let words = title.split(/[-\s]/).map(word => word.match(/[\w]+[']*[\w]*/)).map(arr => arr? arr[0] : "")
     return words.reduce((word1, word2) => vowelComparator(word1, word2) > 0 ? word1 : word2)
 }
 
 class Article {
     constructor({externalId, importDate, title, description, publicationDate, link, mainPicture}) {
-        this.externalId = JSON.parse(externalId)
+        this.externalId = externalId
         this.importDate = importDate
         this.title = title
         this.description = description

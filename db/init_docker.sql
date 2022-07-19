@@ -5,7 +5,7 @@ USE studious_article_reader_db
 DROP TABLE IF EXISTS `Articles`;
 CREATE TABLE `Articles` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `externalId` varchar(255) DEFAULT NULL,
+  `externalId` varchar(255) NOT NULL,
   `importDate` datetime DEFAULT NULL,
   `title` text,
   `description` text,
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `Imports`;
 CREATE TABLE `Imports` (
   `id` int NOT NULL AUTO_INCREMENT,
   `importDate` datetime DEFAULT NULL,
-  `rawContent` text,
+  `rawContent` text(65500),
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
