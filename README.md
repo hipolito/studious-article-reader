@@ -33,13 +33,13 @@ npm install
 
 This project used environment variables to be configure so, export the following variables pointed to your database and expected api port exposed
 ```
-DATABASE_PASSWORD='some_incredible_password'
-DATABASE_NAME='database_name'
-DATABASE_USER='root'
-DATABASE_PORT=3306
-DATABASE_HOST='localhost'
-SERVER_PORT=8080
-DATABASE_DIALECT='mysql'
+export DATABASE_PASSWORD='some_incredible_password'
+export DATABASE_NAME='database_name'
+export DATABASE_USER='root'
+export DATABASE_PORT=3306
+export DATABASE_HOST='localhost'
+exprot SERVER_PORT=8080
+export DATABASE_DIALECT='mysql'
 ```
 
 I use ``.env`` file with this variables for my docker-compose.yml solution
